@@ -1,6 +1,13 @@
 class DiariesController < ApplicationController
+before_action :login_required
+
+  def index
+    @diary = Diary.new
+    @diaries = current_user.diaries.all
+  end
+
   def create
-    @diary = Diary.new(diary_params)
+    @diary = current_user.diaries.new(diary_params)
     if @diary.save
       redirect_to root_path
     else
