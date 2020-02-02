@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get "/home"  => "homes#index"
-  resources :users
   root 'diaries#index'
   get '/diaries/index',to: 'diaries#index'
 
-  resources 'diaries'
+  resources :users
+  resources :diaries
 
   get '/login',to: 'sessions#new'
   post 'login',to: 'sessions#create'

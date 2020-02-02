@@ -16,8 +16,8 @@
 
     <ul class="navbar-nav ml-auto">
       <% if current_user %>
-        <li class="nav-item nav-link">ユーザー名：<%= current_user.name %></li>
-        <li class="nav-item"><%= link_to 'ログアウト',logout_path, method: :delete, class: 'nav-link' %></li>
+        <li class="nav-item nav-link"><%= link_to "#{current_user.name}",edit_user_path(current_user), class: 'nav-link' %></li>
+        <li class="nav-item nav-link"><%= link_to 'ログアウト',logout_path, method: :delete, class: 'nav-link' %></li>
       <% else %>
       <li class="nav-item"><%= link_to '新規登録',new_user_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to 'ログイン',login_path, class: 'nav-link' %></li>
@@ -26,6 +26,11 @@
   </div>
 
   <div class="container">
+    <% if flash.notice.present? %>
+     <div class="alert alert-success mt-3">
+       <%= flash[:notice] %>
+     </div>
+     <% end %>
     <%= yield %>
   </div>
   </body>

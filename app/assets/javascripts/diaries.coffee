@@ -29,9 +29,9 @@ window.draw_graph = ->
             scales: {
                 yAxes: [{
                     ticks: {
-                        max: 66,
-                        min: 50,
-                        stepSize: 2
+                        max: 100,
+                        min: 40,
+                        stepSize: 4
                     }
                 }]
             }
