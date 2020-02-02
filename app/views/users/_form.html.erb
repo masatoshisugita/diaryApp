@@ -12,25 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :氏名 %><br>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label :メールアドレス %><br>
     <%= form.text_field :email %>
   </div>
   <div class="field">
-    <%= form.label :password %>
+    <%= form.label :パスワード %><br>
     <%= form.text_field :password %>
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation %>
+    <%= form.label :パスワード（確認） %><br>
     <%= form.text_field :password_confirmation %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :登録,class: 'btn btn-success'%>
   </div>
 <% end %>

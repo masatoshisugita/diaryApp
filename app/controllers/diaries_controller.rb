@@ -3,10 +3,10 @@ before_action :login_required
 
   def index
     @diary = Diary.new
-    @diaries = current_user.diaries.all
+    @diaries = @current_user.diaries.all
 
     count = current_user.diaries.length
-    
+
     gon.data = []
     @diaries[0..count].each do |i|
       gon.data << i.weight
@@ -19,15 +19,18 @@ before_action :login_required
   end
 
   def create
-    @diary = current_user.diaries.new(diary_params)
+    @diary = @current_user.diaries.new(diary_params)
     if @diary.save
       redirect_to root_path
     else
-      render :index
+      redirect_to root_path
     end
   end
 
-  def update
+  def destroy
+    diary = current_user.diaries.find_by(id: params[:id])
+    diary.destroy
+    redirect_to root_url, notice: "削除しました。"
   end
 
   private
